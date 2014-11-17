@@ -192,16 +192,20 @@ module TConsole
 
       if is_rails?
         config.preload_paths = ["./config/application"]
-        
+
         if mode == :minitest
           config.include_paths = ["./test"]
           config.file_sets = {
-            "all" => ["#{config.test_dir}/unit/**/*_test.rb", "#{config.test_dir}/functional/**/*_test.rb",
-              "#{config.test_dir}/integration/**/*_test.rb"],
-            "units" => ["#{config.test_dir}/unit/**/*_test.rb"],
-            "unit" => ["#{config.test_dir}/unit/**/*_test.rb"],
-            "functionals" => ["#{config.test_dir}/functional/**/*_test.rb"],
-            "functional" => ["#{config.test_dir}/functional/**/*_test.rb"],
+            "all" => [
+              "#{config.test_dir}/controllers/**/*_test.rb",
+              "#{config.test_dir}/decorators/**/*_test.rb",
+              "#{config.test_dir}/helpers/**/*_test.rb",
+              "#{config.test_dir}/mailers/**/*_test.rb",
+              "#{config.test_dir}/models/**/*_test.rb"
+            ],
+            "models" => ["#{config.test_dir}/models/**/*_test.rb"],
+            "decorators" => ["#{config.test_dir}/decorators/**/*_test.rb"],
+            "controllers" => ["#{config.test_dir}/controllers/**/*_test.rb"],
             "integration" => ["#{config.test_dir}/integration/**/*_test.rb"]
           }
         end
